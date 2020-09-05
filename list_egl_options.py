@@ -11,8 +11,7 @@ out, err = p.communicate()
 print(err)
 
 N = err.decode("utf-8").split(" of ")[1]
-N = N.replace('.\n','')
-N = int(N)
+N = int(N[0])
 print("number of EGL devices: {}".format(N))
 
 for i in range(N):

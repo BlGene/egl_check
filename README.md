@@ -2,7 +2,8 @@
 
 This file provides to options to see which EGL device is being used:
 
-run `list_egl_devices.py` to see which options you have.
-
-run `egl_python.py` to see what pyOpenGL uses by default.
-
+```
+bash build.sh 			# compile c++ code
+python list_egl_devices.spy 	# run c++ code multiple times
+python egl_python.py		# dee what the pyOpenGL default option is
+```
