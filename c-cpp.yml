@@ -1,0 +1,21 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ ci_test ]
+  pull_request:
+    branches: [ ci_test ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build
+      run: bash build.sh
+    - name: run binary
+      run: ./EGL_options.o
+    - name: run listing
+      run: python list_egl_devices.py
