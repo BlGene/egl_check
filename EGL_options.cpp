@@ -37,6 +37,7 @@
 
 #include "glad/egl.h"
 #include "glad/gl.h"
+#include "glad/glx.h"
 
 #include "EGL_options.h"
 
@@ -272,6 +273,12 @@ void EGLOpenGLWindow::createWindow(const b3gWindowConstructionInfo& ci)
 	// print this in plugin:
 	const GLubyte* ven = glGetString(GL_VENDOR);
 	printf("GL_VENDOR=%s\n", ven);
+    EGLAttrib cudaIndex;
+
+    eglQueryDeviceAttribEXT(egl_devices[m_data->m_renderDevice], EGL_CUDA_DEVICE_NV, &cudaIndex);
+    if (eglGetError() == EGL_SUCCESS) {
+        printf("CUDA_DEVICE=%d\n" ,cudaIndex);
+    }
 	const GLubyte* ren = glGetString(GL_RENDERER);
 	printf("GL_RENDERER=%s\n", ren);
 	const GLubyte* ver = glGetString(GL_VERSION);
